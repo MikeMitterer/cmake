@@ -15,6 +15,7 @@ SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}")
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Main-Config (Architecture,...)                                  │
+# │     https://cmake.org/Wiki/CMake_Useful_Variables                │
 # └──────────────────────────────────────────────────────────────────┘
 
 # Architecture (32/64 bit) Wenn X64 nicht auf ON steht funkt der build der
@@ -47,10 +48,17 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${XCTARGET}"
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${XCTARGET}")
 
 # Weitere Suchpfade zu verschiedenen libs
-set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /Volumes/Daten/DevLocal/DevCPP/libs )
+set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${CMAKE_SOURCE_DIR}/.dependencies" )
 
 # Include-Libs (Header only) werden auch hier abgelegt
-set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} /Volumes/Daten/DevLocal/DevCPP/libs )
+#
+# CMAKE_CURRENT_SOURCE_DIR
+#   this is the directory where the currently processed CMakeLists.txt is located in
+#
+# Dependencies wurde mit git submodule add <repository-url> hinzugefügt
+# und können mit git submodule update --init -- external/<repo name> aktualisiert werden
+#
+set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "${CMAKE_SOURCE_DIR}/.dependencies" )
 
 #list(APPEND CMAKE_MODULE_PATH "/usr/local/share/cmake/Modules")
 
