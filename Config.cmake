@@ -11,6 +11,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_compile_options("-Wall")
 # add_compile_options("-Wextra")
 
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" )
+    # Wichtig - sonst funktioniert's auf dem Raspi (und auf Linux) nicht
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+endif ()
+
 SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}")
 
 # ┌──────────────────────────────────────────────────────────────────┐
@@ -56,7 +61,10 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${CMAKE_SOURCE_DIR}/.dependencies"
 #   this is the directory where the currently processed CMakeLists.txt is located in
 #
 # Dependencies wurde mit git submodule add <repository-url> hinzugefügt
-# und können mit git submodule update --init -- external/<repo name> aktualisiert werden
+# und können mit "git submodule update --init -- external/<repo name>" aktualisiert werden
+#
+#   Hint:
+#       git submodule update --init -- .dependencies/*
 #
 set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "${CMAKE_SOURCE_DIR}/.dependencies" )
 
