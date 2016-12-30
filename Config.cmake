@@ -3,7 +3,7 @@
 # └──────────────────────────────────────────────────────────────────┘
 
 # C++11:
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -march=native")
 
 # C++14:
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y ")
@@ -11,6 +11,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_compile_options("-Wall")
 # add_compile_options("-Wextra")
 
+# GNU - gcc
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" )
     # Wichtig - sonst funktioniert's auf dem Raspi (und auf Linux) nicht
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
@@ -38,7 +39,8 @@ endif()
 #set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 #set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-if (NOT XCTARGET)
+if (NOT CMAKE_GENERATOR_PLATFORM)
+    #set(CMAKE_GENERATOR_PLATFORM )
     set(XCTARGET mac)
 endif ()
 
