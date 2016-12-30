@@ -9,31 +9,29 @@
 # Functions defined:
 #   get_parent_name(<VAR>) - returns the name of the parent folder
 
-find_package(PkgConfig)
+macro(_gtest_adjust_vars)
+    find_package(PkgConfig)
 
-find_file(gtest_DIR googletest
-        PATH .dependencies
-        #HINTS gtest
-        )
+    find_file(gtest_DIR googletest
+            PATH "${CMAKE_CURRENT_SOURCE_DIR}/.dependencies" .dependencies ENV GTEST_DIR
+            #HINTS gtest
+            )
 
-#if(NOT gtest_INCLUDE_DIR AND IS_DIRECTORY "/Volumes/Daten/DevLocal/DevCPP/libs/${gtest_DIR}")
-#    set(gtest_INCLUDE_DIR "/Volumes/Daten/DevLocal/DevCPP/libs/${gtest_DIR}")
-#endif()
+    #if(NOT gtest_INCLUDE_DIR AND IS_DIRECTORY "/Volumes/Daten/DevLocal/DevCPP/libs/${gtest_DIR}")
+    #    set(gtest_INCLUDE_DIR "/Volumes/Daten/DevLocal/DevCPP/libs/${gtest_DIR}")
+    #endif()
 
-#message(STATUS "gtestDir:              ${gtest_DIR}" )
+    #message(STATUS "gtestDir:              ${gtest_DIR}" )
 
-include(FindPackageHandleStandardArgs)
-# handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE
-# if all listed variables are TRUE
-find_package_handle_standard_args(gtest DEFAULT_MSG
-        gtest_DIR
-        )
+    include(FindPackageHandleStandardArgs)
+    # handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE
+    # if all listed variables are TRUE
+    find_package_handle_standard_args(gtest DEFAULT_MSG
+            gtest_DIR
+            )
 
-mark_as_advanced(gtest_DIR)
-
-if(gtest_DIR)
-    add_subdirectory(${gtest_DIR})
-endif()
+    mark_as_advanced(gtest_DIR)
+endmacro()
 
 # Gibt den Namen des Parent-Dirs zurück
 #
@@ -57,3 +55,16 @@ function(get_parent_name parentName)
 
     SET(${parentName} ${PARENT_NAME} PARENT_SCOPE)
 endfunction()
+
+#-------------------------------------------------------------------------------
+# main.
+#-------------------------------------------------------------------------------
+
+if (NOT gtest_FOUND)
+    _gtest_adjust_vars()
+
+    if(gtest_DIR)
+        add_subdirectory(${gtest_DIR})
+    endif()
+
+endif ()
