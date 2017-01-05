@@ -205,5 +205,6 @@ if(${Poco_OSP_FOUND})
     endif()
 endif()
 
-message(STATUS "Found Poco: ${Poco_LIBRARIES}")
+message(STATUS "Found Poco:            ${Poco_LIBRARIES}")
 
+include_directories(${Poco_INCLUDE_DIRS})

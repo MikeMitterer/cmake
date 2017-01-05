@@ -47,17 +47,15 @@ message(STATUS "dart_TARGET:           " ${dart_TARGET})
 # └──────────────────────────────────────────────────────────────────┘
 
 if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-    MESSAGE(STATUS "64 bits compiler detected" )
     SET( EX_PLATFORM 64 )
     SET( EX_PLATFORM_NAME "x64" )
 else( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-    MESSAGE(STATUS "32 bits compiler detected" )
     SET( EX_PLATFORM 32 )
     SET( EX_PLATFORM_NAME "x86" )
 endif( CMAKE_SIZEOF_VOID_P EQUAL 8 )
 
 message(STATUS "System name:           " ${CMAKE_SYSTEM_NAME})
-message(STATUS "Platform:              " ${EX_PLATFORM})
+message(STATUS "Platform:              " ${EX_PLATFORM} "-bit")
 message(STATUS "Platform Name:         " ${EX_PLATFORM_NAME})
 
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")

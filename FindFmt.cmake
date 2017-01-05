@@ -17,7 +17,7 @@ if(NOT fmt_INCLUDE_DIR)
     set(fmt_INCLUDE_DIR "/Volumes/Daten/DevLocal/DevCPP/libs/fmt")
 endif()
 
-message(STATUS "fmt-Include Dir:   ${fmt_INCLUDE_DIR}" )
+message(STATUS "fmt-Include Dir:       ${fmt_INCLUDE_DIR}" )
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE

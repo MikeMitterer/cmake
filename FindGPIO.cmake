@@ -11,9 +11,18 @@
 
 find_package(PkgConfig)
 
-find_file(gpio_DIR src/GPIO.cpp
-        PATH .dependencies/gpio ENV GPIO_DIR
+set(_GPIO_DIR_HINT ".dependencies/gpio")
+set(_GPIO_FILE_HINT "src/GPIO.cpp")
+
+find_file(gpio_DIR ${_GPIO_FILE_HINT}
+        PATH "${CMAKE_CURRENT_SOURCE_DIR}/${_GPIO_DIR_HINT}" ${_GPIO_DIR_HINT} ENV GPIO_DIR
         )
+
+# Hack da sonst das File in dem symbolischen Link nicht gefunden wird...
+if(NOT gpio_DIR AND IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/${_GPIO_DIR_HINT}")
+    set(gpio_DIR "${CMAKE_CURRENT_SOURCE_DIR}/${_GPIO_DIR_HINT}/${_GPIO_FILE_HINT}")
+endif()
+
 
 if(gpio_DIR)
     # gpio_DIR:   xxx/hello_led/.dependencies/gpio/src/GPIO.cpp
@@ -30,7 +39,7 @@ message(STATUS "gpio_DIR:              ${gpio_DIR}" )
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE
 # if all listed variables are TRUE
-find_package_handle_standard_args(gtest DEFAULT_MSG
+find_package_handle_standard_args(gpio DEFAULT_MSG
         gpio_DIR
         )
 
