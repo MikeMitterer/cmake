@@ -15,8 +15,8 @@ find_file(spdlog_INCLUDE_DIR spdlog.h
         HINTS spdlog
         )
 
-if(NOT spdlog_INCLUDE_DIR AND IS_DIRECTORY "/Volumes/Daten/DevLocal/DevCPP/libs/${SPDLOG_DIR}")
-    set(spdlog_INCLUDE_DIR "/Volumes/Daten/DevLocal/DevCPP/libs/${SPDLOG_DIR}")
+if(NOT spdlog_INCLUDE_DIR AND IS_DIRECTORY "$ENV{DEVCPP}/libs/${SPDLOG_DIR}")
+    set(spdlog_INCLUDE_DIR "$ENV{DEVCPP}/libs/${SPDLOG_DIR}")
 endif()
 
 message(STATUS "spdlog-Include Dir:    ${spdlog_INCLUDE_DIR}" )

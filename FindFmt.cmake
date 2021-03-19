@@ -14,7 +14,7 @@ find_file(fmt_INCLUDE_DIR format.h
         )
 
 if(NOT fmt_INCLUDE_DIR)
-    set(fmt_INCLUDE_DIR "/Volumes/Daten/DevLocal/DevCPP/libs/fmt")
+    set(fmt_INCLUDE_DIR "$ENV{DEVCPP}/libs/fmt")
 endif()
 
 message(STATUS "fmt-Include Dir:       ${fmt_INCLUDE_DIR}" )

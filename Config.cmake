@@ -2,8 +2,14 @@
 # │  Compiler + basic path settings                                  │
 # └──────────────────────────────────────────────────────────────────┘
 
+# --------------------------------------------------------------------
+# Der C++-Standard sollte eigentlich mit CXX_STANDARD für das jeweilige
+# Target gesetzt werden:
+#       https://cmake.org/cmake/help/latest/prop_tgt/CXX_STANDARD.html
+# --------------------------------------------------------------------
+
 # C++11:
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 # -march=armv6
 # -march valid arguments (gcc 4.9.3):
 #   armv2 armv2a armv3 armv3m armv4 armv4t armv5 armv5e armv5t armv5te armv6 armv6-m armv6j
@@ -11,9 +17,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #   armv8-a armv8-a+crc iwmmxt iwmmxt2 native
 
 # C++14:
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y ")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+
+# C++17:
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+
+# C++20:
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
 add_compile_options("-Wall")
+
+# Einige Warnings machen relativ wening Sinn und werden
+# ausgeschaltet
+add_compile_options("-Wno-unused-variable")
+add_compile_options("-Wno-unknown-pragmas")
+
 # add_compile_options("-Wextra")
 
 # GNU - gcc

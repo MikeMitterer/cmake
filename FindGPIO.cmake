@@ -7,7 +7,7 @@
 #   gpio_FOUND - System has gtest
 #
 # Functions defined:
-#   get_parent_name(<VAR>) - returns the name of the parent folder
+#
 
 find_package(PkgConfig)
 
