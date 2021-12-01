@@ -17,7 +17,7 @@ if(NOT args_INCLUDE_DIR)
     set(args_INCLUDE_DIR "$ENV{DEVCPP}/libs/args")
 endif()
 
-message(STATUS "args-Include Dir:   ${args_INCLUDE_DIR}" )
+message(STATUS "args-Include Dir:      ${args_INCLUDE_DIR}" )
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE
