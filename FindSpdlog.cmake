@@ -11,7 +11,7 @@ find_package(PkgConfig)
 set(SPDLOG_DIR spdlog/include)
 
 find_file(spdlog_INCLUDE_DIR spdlog.h
-        PATH ${SPDLOG_DIR}
+        PATH ${CMAKE_LIBRARY_PATH} ${SPDLOG_DIR} /usr/lib /usr/local/lib
         HINTS spdlog
         )
 

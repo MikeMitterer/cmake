@@ -22,6 +22,10 @@
 # C++17:
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
+# GoogleTest requires at least C++11
+# Muss natürlich mit den Compiler-Settings übereinstimmen
+set(CMAKE_CXX_STANDARD 17)
+
 # C++20:
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
@@ -82,7 +86,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${XCTARGET}"
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${XCTARGET}")
 
 # Weitere Suchpfade zu verschiedenen libs
-set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${CMAKE_SOURCE_DIR}/.dependencies" )
+set(CMAKE_LIBRARY_PATH
+    ${CMAKE_LIBRARY_PATH}
+    "${CMAKE_SOURCE_DIR}/.dependencies"
+)
 
 # Include-Libs (Header only) werden auch hier abgelegt
 #
@@ -95,7 +102,10 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "${CMAKE_SOURCE_DIR}/.dependencies"
 #   Hint:
 #       git submodule update --init -- .dependencies/*
 #
-set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "${CMAKE_SOURCE_DIR}/.dependencies" )
+set(CMAKE_INCLUDE_PATH
+    ${CMAKE_INCLUDE_PATH}
+    "${CMAKE_SOURCE_DIR}/.dependencies"
+)
 
 #list(APPEND CMAKE_MODULE_PATH "/usr/local/share/cmake/Modules")
 
