@@ -88,7 +88,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib/${XCTARGET}"
 # Weitere Suchpfade zu verschiedenen libs
 set(CMAKE_LIBRARY_PATH
     ${CMAKE_LIBRARY_PATH}
-    "${CMAKE_SOURCE_DIR}/.dependencies"
+    # Hier liegt das BASIS CMakeLists.txt (im Falle des ESP32 Projekts - im ESP32-Root)
+    # "${CMAKE_SOURCE_DIR}/.dependencies"
+
+    # Hier liegt das CMakeLists.txt des aktuell, verarbeiteten CMakeLists.txt
+    # Im Falle von, z.B. HelloESP32, ESP32/HelloESP32/CMakeLists.txt
+    "${CMAKE_CURRENT_SOURCE_DIR}/.dependencies"
 )
 
 # Include-Libs (Header only) werden auch hier abgelegt
