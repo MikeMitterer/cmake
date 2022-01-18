@@ -1,0 +1,9 @@
+# ------------------------------------------------------------------------------
+# Config-File for Jenkins pushTrigger automatisation
+# ------------------------------------------------------------------------------
+
+# http://jenkins.local:2080/job/[Full Job NAME], e.g. Scripts/job/Utils
+JENKINS_JOB_NAME="CPP/job/CMake"
+
+# by default your GIT-Origin
+JENKINS_JOB_TOKEN="cmake"
