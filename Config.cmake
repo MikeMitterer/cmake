@@ -72,8 +72,11 @@ endif()
 
 if (NOT XCTARGET)
     #set(CMAKE_GENERATOR_PLATFORM )
-    set(XCTARGET mac)
-endif ()
+    string(TOLOWER ${CMAKE_SYSTEM_NAME} XCTARGET)
+    if(XCTARGET STREQUAL "darwin")
+        set(XCTARGET "mac")
+    endif()
+endif()
 
 #message(STATUS "XCTarget:              ${XCTARGET}" )
 
