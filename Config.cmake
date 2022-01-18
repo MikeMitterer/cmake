@@ -50,6 +50,13 @@ endif ()
 
 SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS}")
 
+# Force  colord output!
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_compile_options (-fdiagnostics-color=always)
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_compile_options (-fcolor-diagnostics)
+endif ()
+
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Main-Config (Architecture,...)                                  │
 # │     https://cmake.org/Wiki/CMake_Useful_Variables                │
