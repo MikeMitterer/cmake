@@ -24,6 +24,10 @@ macro(showCMakeVars)
     endforeach()
 endmacro()
 
+# Liste von Source?-Files wird angezeigt
+#
+# Usage:
+#   showFileList("loggerSource:" "${logger_SOURCES}")
 function(showFileList LABEL FILES)
     message(STATUS "${LABEL}:")
     foreach (_file ${FILES})
