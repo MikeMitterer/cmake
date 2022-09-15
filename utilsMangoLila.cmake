@@ -28,6 +28,9 @@ endmacro()
 #
 # Usage:
 #   showFileList("loggerSource:" "${logger_SOURCES}")
+#
+#   setCurrentDir()
+#   showFileList("${CURRENT_NAME} - SourceFiles:" "${SOURCE_FILES}")
 function(showFileList LABEL FILES)
     message(STATUS "${LABEL}:")
     foreach (_file ${FILES})
