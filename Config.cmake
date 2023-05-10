@@ -31,6 +31,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_compile_options("-Wall")
 
+# Optional - aber sehr sinnvoll
+# add_compile_options("-Wextra")
+
 # Einige Warnings machen relativ wening Sinn und werden
 # ausgeschaltet
 add_compile_options("-Wno-unused-variable")

@@ -17,3 +17,8 @@ SET(CMAKE_C_FLAGS "-nostdlib")
 
 # optional 
 # SET(CMAKE_OSX_SYSROOT "${MM_COMPILER_FOLDER}/xtensa-esp32-elf/sysroot")
+
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_C_COMPILER_WORKS 1)
+set(CMAKE_CXX_COMPILER_WORKS 1)
+
